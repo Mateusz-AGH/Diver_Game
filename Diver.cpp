@@ -283,8 +283,10 @@ int main(void)
 
                 // Spawning the Sharks + speeding them Up
                 float sharkSpeedMultiplier = 1.0f + elapsedTime / 50.0f;
-                const float minSharkSpawnInterval = 1.0f;
-                float currentSharkSpawnInterval = fmax(sharkSpawnInterval - elapsedTime / 30.0f, minSharkSpawnInterval);
+                const float minSharkSpawnInterval = 0.3f;
+                float currentSharkSpawnInterval = fmax(sharkSpawnInterval - elapsedTime / 25.0f, minSharkSpawnInterval);
+
+                printf("currentSharkSpawnInterval: %f \n", currentSharkSpawnInterval);
 
                 sharkSpawnTimer += GetFrameTime();
                 if (sharkSpawnTimer >= currentSharkSpawnInterval)
