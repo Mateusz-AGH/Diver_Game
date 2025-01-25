@@ -28,3 +28,5 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(raylib)
 target_link_libraries(Diver PRIVATE raylib)
+
+file(COPY ${CMAKE_SOURCE_DIR}/resources DESTINATION ${CMAKE_BINARY_DIR})
