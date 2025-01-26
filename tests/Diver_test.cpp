@@ -1,7 +1,5 @@
 #include <gtest/gtest.h>
 #include "../Diver.h" // Adjust this according to your include path
-#include <vector>
-#include "raylib.h"
 
 // Sample test case
 TEST(DiverTest, SampleTest) {

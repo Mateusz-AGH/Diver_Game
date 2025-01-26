@@ -1,9 +1,7 @@
 ﻿#include "Diver.h"
-#include "raylib.h"
-#include <vector>
 
 
-using namespace std;
+using std::vector;
 typedef enum GameScreen {TITLE, GAMEPLAY, ENDING } GameScreen;
 
 // Class Shark
@@ -129,7 +127,6 @@ int main(void)
     vector<Shark> sharks; // vector for Sharks
     float sharkSpawnTimer = 0; // Shark Timer
     const float sharkSpawnInterval = 2.0f; //sec before new shark
-
 
     // OxygenBottle
     vector<OxygenBottle> oxygenBottles; // Vector for Oxygen Bottles
@@ -553,7 +550,7 @@ int main(void)
         EndDrawing();
     }
 
-    UnloadTexture(texheart); // Jeśli już nie potrzebujesz serc
+    UnloadTexture(texheart);
     UnloadTexture(texBackground);
     UnloadTexture(texDiver);
     UnloadTexture(texShark);
