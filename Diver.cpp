@@ -97,9 +97,10 @@ int main(void)
     // Initialization
     //------------------------------------------------------------------------------------------------------------------------------------
     const int screenWidth = 1920;
-    const int screenHeight = 1080;
+    const int screenHeight = 1000;
     InitWindow(screenWidth, screenHeight, "Diver");
-    SetWindowState(FLAG_WINDOW_RESIZABLE); // Resiziable Window
+    SetWindowState(FLAG_WINDOW_RESIZABLE);  // Okienko z możliwością zmiany rozmiaru
+    ClearWindowState(FLAG_FULLSCREEN_MODE); // Wyłącz tryb pełnoekranowy
     GameScreen currentScreen = TITLE;
 
 
@@ -203,9 +204,15 @@ int main(void)
                     musicstart = true;
                 }
 
+                if (IsKeyPressed(KEY_F11))
+                {
+                    ToggleFullscreen();
+                }
+
             } break;
             case GAMEPLAY:
             {
+                printf("music pitch: %f \n", pitch);
 
                 elapsedTime += GetFrameTime(); // Time of last Frame
 
@@ -227,7 +234,6 @@ int main(void)
                     SetMusicPitch(music, pitch);
                     PlayMusicStream(music);
                     musicstart = false;
-
                 }
 
                 // Speeding Up the game
@@ -286,7 +292,7 @@ int main(void)
                 const float minSharkSpawnInterval = 0.3f;
                 float currentSharkSpawnInterval = fmax(sharkSpawnInterval - elapsedTime / 25.0f, minSharkSpawnInterval);
 
-                printf("currentSharkSpawnInterval: %f \n", currentSharkSpawnInterval);
+                //printf("currentSharkSpawnInterval: %f \n", currentSharkSpawnInterval);
 
                 sharkSpawnTimer += GetFrameTime();
                 if (sharkSpawnTimer >= currentSharkSpawnInterval)
@@ -456,10 +462,11 @@ int main(void)
                 DiverframesSpeed = 15;
 
                 // Music
-                float pitch = 0.5f; // "speed" of the song
+                pitch = 0.5f; // "speed" of the song
+                SetMusicPitch(music, pitch);
                 PlayMusicStream(music); // play music
-                bool pause = false; // Pausing the music
-                bool musicstart = true; // Flag for the music change
+                pause = false; // Pausing the music
+                musicstart = true; // Flag for the music change
 
                 //Time
                 elapsedTime = 0;
